@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malla Reddy — Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer — portfolio, writing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Your Name — Software Engineer">
+  <meta property="og:description" content="Senior Software Engineer — portfolio, projects, writing.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-image.png">
+</head>
+<body>
+  <header class="container header">
+    <div class="id">
+      <img src="assets/avatar.png" alt="Your avatar" class="avatar">
+      <div>
+        <h1>Your Name</h1>
+        <p>Senior Software Engineer • Backend • Distributed Systems • System Design</p>
+        <p class="links">
+          <a href="https://github.com/mallareddy33" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/p-malla-reddy-a8b5b3111" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mallareddy304@gmail.com">Email</a>
+          <a href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        </p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="blog/index.html">Blog</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I’m a software engineer focused on building reliable, scalable systems. I enjoy
+        event‑driven architectures, performance tuning, and clean APIs.
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <article>
+          <h3>Senior Software Engineer — Company Name</h3>
+          <small>2023 — Present • Bengaluru, IN</small>
+          <p>Lead integrations for vulnerability management, processing 300M+ items with
+          event-driven pipelines (SQS/Lambda), improving latency by 35%.</p>
+        </article>
+        <article>
+          <h3>Software Engineer — Previous Company</h3>
+          <small>2020 — 2023</small>
+          <p>Migrated monolith to microservices, designed quota enforcement, and built
+          typeahead search with Redis + CQRS.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div id="project-grid" class="grid"></div>
+      <p class="muted">Add more in <code>projects.json</code>.</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> Your Name. Built with plain HTML/CSS, deployed via GitHub Pages.</p>
+  </footer>
+
+  <script>
+    // Load projects.json and render
+    fetch('projects.json')
+      .then(r => r.json())
+      .then(items => {
+        const g = document.getElementById('project-grid');
+        items.forEach(p => {
+          const a = document.createElement('a');
+          a.className = 'card';
+          a.href = p.url;
+          a.target = '_blank';
+          a.rel = 'noreferrer';
+          a.innerHTML = `<h3>${p.title}</h3><p>${p.description}</p><span>${p.stack}</span>`;
+          g.appendChild(a);
+        });
+      });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

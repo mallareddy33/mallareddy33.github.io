@@ -1,0 +1,1 @@
+Put images like avatar.png and og-image.png here.
